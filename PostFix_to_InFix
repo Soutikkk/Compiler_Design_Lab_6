@@ -1,0 +1,25 @@
+def postfix_to_infix(expression):
+    stack = []
+
+    for ch in expression:
+        # If operand, push it
+        if ch.isalnum():
+            stack.append(ch)
+
+        # If operator, pop two operands
+        else:
+            operand2 = stack.pop()
+            operand1 = stack.pop()
+
+            # Create infix expression
+            result = "(" + operand1 + ch + operand2 + ")"
+            stack.append(result)
+
+    return stack.pop()
+
+
+# Input
+expression = input("Enter postfix expression: ")
+
+# Output
+print("Infix expression:", postfix_to_infix(expression))
